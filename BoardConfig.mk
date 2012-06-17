@@ -151,12 +151,18 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_SUPPRESS_EMMC_WIPE := true
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/epic4gtouch/include
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := SPH-D710,epic4gtouch
+
+# Nearly all shipped SPH-D710 devices have defective eMMC chips (VYL00M fwrev 0x19)
+# Prevent usage of ERASE commands in recovery on these boards.
+# This is redundant for our recovery since the kernel MMC_CAP_ERASE
+# disabled for mshci.c, however it makes nightly ZIPs safer to flash
+# from kernels that still have MMC_CAP_ERASE enabled.
+BOARD_SUPRRESS_EMMC_WIPE := true
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/epic4gtouch/BoardConfigVendor.mk

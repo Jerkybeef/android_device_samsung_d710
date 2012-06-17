@@ -120,10 +120,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.call_ring.delay=3000 \
        ro.telephony.ril.v3=datacall \
 	   hwui.render_dirty_regions=false \
-	   hwui.disable_vsync=true \
-	   ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard
+	   hwui.disable_vsync=true
+
+# Potentially add this later.
+# ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard
 
 PRODUCT_PROPERTY_OVERRIDES += \
+       persist.sys.vold.switchexternal=1 \
 	   persist.service.usb.setting=0 \
 	   persist.service.adb.enable=1 \
 	   persist.sys.usb.config=mass_storage,adb
