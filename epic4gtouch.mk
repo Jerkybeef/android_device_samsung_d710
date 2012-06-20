@@ -201,8 +201,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.service.usb.hubport=4
 	
 # MFC API
-#PRODUCT_PACKAGES += \
-#    libsecmfcapi
+PRODUCT_PACKAGES += \
+    libsecmfcapi
 
 # OMX
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
