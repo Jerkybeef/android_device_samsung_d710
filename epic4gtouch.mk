@@ -89,7 +89,6 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/asound.conf:system/etc/asound.conf
-    #device/samsung/epic4gtouch/configs/audio_effects.conf:system/etc/audio_effects.conf
 	
 # Misc	
 PRODUCT_COPY_FILES += \
@@ -120,13 +119,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.call_ring.delay=3000 \
        ro.telephony.ril.v3=datacall \
 	   hwui.render_dirty_regions=false \
-	   hwui.disable_vsync=true
-
-# Potentially add this later.
-# ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard
+	   hwui.disable_vsync=true\
+	   ro.vold.switchablepairs=/mnt/emmc,/mnt/sdcard
 
 PRODUCT_PROPERTY_OVERRIDES += \
-       persist.sys.vold.switchexternal=1 \
 	   persist.service.usb.setting=0 \
 	   persist.service.adb.enable=1 \
 	   persist.sys.usb.config=mass_storage,adb
@@ -159,6 +155,7 @@ PRODUCT_COPY_FILES += \
 # Packages
 PRODUCT_PACKAGES := \
     TvOut \
+	TvOutHack \
 	com.android.future.usb.accessory \
 	smdk4210_hdcp_keys \
 	GalaxyS2Settings \
@@ -203,16 +200,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208 \
 	persist.service.usb.hubport=4
 	
-# TV OUT
-#PRODUCT_PACKAGES += \
-#	libhdmiclient
-#	libcec \
-#	libddc \
-#	libedid
-
 # MFC API
-PRODUCT_PACKAGES += \
-    libsecmfcapi
+#PRODUCT_PACKAGES += \
+#    libsecmfcapi
 
 # OMX
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal

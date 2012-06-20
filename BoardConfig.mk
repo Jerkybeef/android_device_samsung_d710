@@ -61,7 +61,7 @@ BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
 #TARGET_KERNEL_CONFIG := cyanogenmod_epic4gtouch_defconfig
 
 # Prebuilt Kernel
-TARGET_PREBUILT_KERNEL := device/samsung/epic4gtouch/prebuilt/boot/zImage
+TARGET_PREBUILT_KERNEL := device/samsung/epic4gtouch/kernel
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -139,7 +139,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 12
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := false
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 
@@ -162,7 +162,7 @@ TARGET_OTA_ASSERT_DEVICE := SPH-D710,epic4gtouch
 # This is redundant for our recovery since the kernel MMC_CAP_ERASE
 # disabled for mshci.c, however it makes nightly ZIPs safer to flash
 # from kernels that still have MMC_CAP_ERASE enabled.
-BOARD_SUPRRESS_EMMC_WIPE := true
+BOARD_SUPPRESS_EMMC_WIPE := true
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/epic4gtouch/BoardConfigVendor.mk
