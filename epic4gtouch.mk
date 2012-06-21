@@ -179,8 +179,11 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-	lights.exynos4 \
-	sensors.exynos4
+	lights.exynos4
+    # Use prebuilt sensor hal for now
+    # source built ones are still
+    # a bit screwy
+	#sensors.exynos4
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
