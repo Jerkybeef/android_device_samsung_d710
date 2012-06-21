@@ -14,9 +14,9 @@
 ######################
 # internal sdcard
 
-dev_mount internal /mnt/emmc 11 /devices/platform/dw_mmc/mmc_host/mmc0/mmc0 nonremoveable,encryptable
+dev_mount internal /mnt/emmc auto /devices/virtual/block/cyasblkdevblk0
 
-dev_mount sdcard /mnt/sdcard auto /devices/virtual/block/cyasblkdevblk0
+dev_mount sdcard /mnt/sdcard 11 /devices/platform/dw_mmc/mmc_host/mmc0/mmc0 nonremoveable,encryptable
 
 dev_mount usbdisk /mnt/usbdisk auto /devices/platform/s5p-ehci
 
