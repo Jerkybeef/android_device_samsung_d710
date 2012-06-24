@@ -14,11 +14,11 @@
      limitations under the License.
 -->
 
-<!-- Epic 4g Touch-specific phone app resources. -->
+<!-- Tuna-specific phone app resources. -->
 <resources>
 
     <!-- Flag indicating if the tty is enabled -->
     <bool name="tty_enabled">true</bool>
-    <!-- <bool name="sprint_mwi_quirk">true</bool> -->
+    <bool name="sprint_mwi_quirk">true</bool>
 
 </resources>

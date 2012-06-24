@@ -119,15 +119,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.call_ring.delay=3000 \
        ro.telephony.ril.v3=datacall \
 	   hwui.render_dirty_regions=false \
-	   hwui.disable_vsync=true\
-	   ro.vold.switchablepairs=/mnt/emmc,/mnt/sdcard
+	   hwui.disable_vsync=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+       ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
+       persist.sys.usb.config=mass_storage
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	   persist.service.usb.setting=0 \
 	   persist.service.adb.enable=1 \
-	   persist.sys.usb.config=mass_storage,adb
-	   
-	   
+   
 # Telephony property for CDMA
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=15 \
@@ -154,7 +155,7 @@ PRODUCT_COPY_FILES += \
 
 # Packages
 PRODUCT_PACKAGES := \
-    TvOut \
+        TvOut \
 	TvOutHack \
 	com.android.future.usb.accessory \
 	smdk4210_hdcp_keys \
@@ -166,8 +167,7 @@ PRODUCT_PACKAGES := \
 # Camera
 PRODUCT_PACKAGES += \
 	Camera \
-	camera.exynos4 \
-	libs5pjpeg
+	camera.exynos4
 	
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml
@@ -231,9 +231,9 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.M4V.Encoder \
     libSEC_OMX_Adec \
     libOMX.SEC.MP3.Decoder \
-	libhwconverter \
-	libs5pjpeg \
-	libfimg
+    libhwconverter \
+    libs5pjpeg \
+    libfimg
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector

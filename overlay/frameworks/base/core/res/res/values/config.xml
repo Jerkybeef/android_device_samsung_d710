@@ -171,6 +171,7 @@
          be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb0"</item>
+        <item>"rdnis0</item>
     </string-array>
 
     <string-array name="config_tether_wimax_regexs">
@@ -219,6 +220,11 @@
     <!-- Set to true if the RSSI should always display CDMA signal
          strength even on EVDO -->
     <bool name="config_alwaysUseCdmaRssi">true</bool>
+
+    <!-- LUN file to be used by legacy USB manager.
+         The existence of this file will be used to determine in the
+         legacy USB manager should be started. -->
+    <string name="config_legacyUmsLunFile">/sys/class/android_usb/f_mass_storage/lun0/file</string>
 	
     <!-- If this value is true, The mms content-disposition field is supported correctly. If false, Content-disposition fragments are ignored -->
     <bool name="config_mms_content_disposition_support">false</bool>
