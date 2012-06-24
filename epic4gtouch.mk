@@ -17,10 +17,8 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/epic4gtouch/overlay
 # Init files
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/lpm.rc:root/lpm.rc \
-	device/samsung/epic4gtouch/init.rc:root/init.rc \
 	device/samsung/epic4gtouch/init.smdk4210.rc:root/init.smdk4210.rc \
 	device/samsung/epic4gtouch/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
-	device/samsung/epic4gtouch/ueventd.rc:root/ueventd.rc \
 	device/samsung/epic4gtouch/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
 
 # These are the hardware-specific features
@@ -84,7 +82,15 @@ PRODUCT_COPY_FILES += \
    device/samsung/epic4gtouch/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
    device/samsung/epic4gtouch/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
    device/samsung/epic4gtouch/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-   device/samsung/epic4gtouch/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc 
+   device/samsung/epic4gtouch/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
+
+# kernel modules
+PRODUCT_COPY_FILES += \
+    device/samsung/epic4gtouch/dhd.ko:root/lib/modules/dhd.ko
+
+#copy kernel 
+PRODUCT_COPY_FILES += \
+    device/samsung/epic4gtouch/kernel:kernel  
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -122,7 +128,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	   hwui.disable_vsync=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-       ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
+       ro.additionalmounts=/mnt/sdcard/external_sd \
        persist.sys.usb.config=mass_storage
 
 PRODUCT_PROPERTY_OVERRIDES += \

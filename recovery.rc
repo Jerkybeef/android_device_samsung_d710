@@ -2,17 +2,16 @@ on early-init
     start ueventd
 
 on init
-    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
+    export PATH /sbin:/vendor/bin
+    export LD_LIBRARY_PATH /sbin
     export ANDROID_ROOT /system
     export ANDROID_DATA /data
-	export ANDROID_CACHE /cache
-	export SECONDARY_STORAGE /emmc
+    export ANDROID_CACHE /cache
     export EXTERNAL_STORAGE /sdcard
 
-	# clockworkmod recovery.fstab is in /misc
-	symlink /misc /etc
+    # clockworkmod recovery.fstab is in /misc
+    # symlink /misc /etc
 
-    mkdir /emmc
     mkdir /sdcard
     mkdir /system
     mkdir /data
@@ -21,8 +20,11 @@ on init
     mkdir /efs
     mkdir /tmp
     mkdir /mnt 0775 root root
-	mount /tmp /tmp tmpfs   
+	mount /tmp /tmp tmpfs
 
+on fs
+    mount ext4 /dev/block/mmcblk0p9 /system noatime wait
+ 
 on boot
 
     ifup lo
