@@ -8,11 +8,13 @@ on init
     export ANDROID_DATA /data
     export ANDROID_CACHE /cache
     export EXTERNAL_STORAGE /sdcard
+    export SECONDARY_STORAGE /external_sd
 
     # clockworkmod recovery.fstab is in /misc
     # symlink /misc /etc
 
     mkdir /sdcard
+    mkdir /external_sd
     mkdir /system
     mkdir /data
     mkdir /cache

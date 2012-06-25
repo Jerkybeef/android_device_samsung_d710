@@ -85,6 +85,9 @@ public class SensorsFragmentActivity extends PreferenceFragment {
         // means it is reset at each boot, providing wrong calibration most of the time at each reboot.
         // So we only set it to "0" if user wants it, as it defaults to 1 at boot
 
+        if (!sharedPrefs.getBoolean(DeviceSettings.KEY_USE_GYRO_CALIBRATION, true))
+ 	    Utils.writeValue(FILE_USE_GYRO_CALIB, "0");
+
         Utils.writeValue(FILE_TOUCHKEY_LIGHT, sharedPrefs.getBoolean(DeviceSettings.KEY_TOUCHKEY_LIGHT, true) ? "0" : "1");
     }
 }

@@ -85,6 +85,9 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charg
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_RES := device/samsung/epic4gtouch/res/charger
 
+# Lights
+TARGET_PROVIDES_LIBLIGHTS := true
+
 # Notification LED
 BOARD_HAS_LED_NOTIF := true
 
