@@ -1,20 +1,24 @@
 import init.smdk4210.usb.rc
 
 on early-init
+    export SECONDARY_STORAGE /mnt/emmc
     export EXTERNAL_STORAGE /mnt/sdcard
-    export SECONDARY_STORAGE /mnt/external_sd
+
     mkdir /mnt 0775 system system
     mkdir /mnt/sdcard 0775 system system
-    mkdir /mnt/external_sd 0775 system system
+    mkdir /mnt/emmc 0775 system system
     mkdir /mnt/usbdisk 0775 system system
+
     mkdir /efs 0771 radio system
     mkdir /preload 0771 system system
     mkdir /mnt/.lfs 0755 root root
+
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
-    symlink /mnt/external_sd /external_sd
-    #my way is better than anyone	    
+    symlink /mnt/emmc /emmc
+
     symlink /system/vendor /vendor
+
 # Disable CFQ slice idle delay
     write /sys/block/mmcblk0/queue/iosched/slice_idle 0
 
@@ -50,7 +54,7 @@ on fs
 
 on post-fs-data
 # bind external sd
-    #mount -o bind /mnt/emmc /mnt/sdcard/external_sd
+    mount -o bind /mnt/emmc /mnt/sdcard/external_sd
 
 # GPS
     chown root system /dev/ttySAC1

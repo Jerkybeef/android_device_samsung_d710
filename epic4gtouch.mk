@@ -128,7 +128,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	   hwui.disable_vsync=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-       ro.additionalmounts=/mnt/sdcard/external_sd \
+       ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
+       persist.sys.vold.switchexternal=1 \
        persist.sys.usb.config=mass_storage
 
 PRODUCT_PROPERTY_OVERRIDES += \
