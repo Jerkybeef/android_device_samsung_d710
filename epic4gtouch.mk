@@ -129,7 +129,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
        ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
-       persist.sys.vold.switchexternal=1 \
        persist.sys.usb.config=mass_storage
 
 PRODUCT_PROPERTY_OVERRIDES += \
