@@ -53,9 +53,6 @@ on fs
     chmod 0770 /data/misc/wifi
 
 on post-fs-data
-# bind external sd
-    mount -o bind /mnt/emmc /mnt/sdcard/external_sd
-
 # GPS
     chown root system /dev/ttySAC1
     chmod 0660 /dev/ttySAC1
