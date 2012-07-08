@@ -21,4 +21,10 @@
     <bool name="tty_enabled">true</bool>
     <bool name="sprint_mwi_quirk">true</bool>
 
+    <!-- Determines if device implements a noise suppression device for in call audio-->
+    <bool name="has_in_call_noise_suppression">true</bool>
+
+    <!-- Audio parameter for settings noise suppression-->
+    <string name="in_call_noise_suppression_audioparameter">dualmic_enabled=true=false</string>
+
 </resources>
