@@ -85,12 +85,12 @@ PRODUCT_COPY_FILES += \
    device/samsung/epic4gtouch/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
 
 # kernel modules
-PRODUCT_COPY_FILES += \
-    device/samsung/epic4gtouch/dhd.ko:root/lib/modules/dhd.ko
+#PRODUCT_COPY_FILES += \
+    #device/samsung/epic4gtouch/dhd.ko:root/lib/modules/dhd.ko
 
 #copy kernel 
-PRODUCT_COPY_FILES += \
-    device/samsung/epic4gtouch/kernel:kernel  
+#PRODUCT_COPY_FILES += \
+    #device/samsung/epic4gtouch/kernel:kernel  
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -184,11 +184,8 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-	lights.exynos4
-    # Use prebuilt sensor hal for now
-    # source built ones are still
-    # a bit screwy
-	#sensors.exynos4
+	lights.exynos4 \
+	sensors.exynos4
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
