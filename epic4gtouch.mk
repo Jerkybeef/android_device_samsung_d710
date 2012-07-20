@@ -90,7 +90,7 @@ PRODUCT_COPY_FILES += \
 
 #copy kernel 
 #PRODUCT_COPY_FILES += \
-    #device/samsung/epic4gtouch/kernel:kernel  
+    #device/samsung/epic4gtouch/kernel:kernel
 
 # Audio
 PRODUCT_COPY_FILES += \
