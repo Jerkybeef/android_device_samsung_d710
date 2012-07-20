@@ -84,14 +84,6 @@ PRODUCT_COPY_FILES += \
    device/samsung/epic4gtouch/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
    device/samsung/epic4gtouch/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
 
-# kernel modules
-#PRODUCT_COPY_FILES += \
-    #device/samsung/epic4gtouch/dhd.ko:root/lib/modules/dhd.ko
-
-#copy kernel 
-#PRODUCT_COPY_FILES += \
-    #device/samsung/epic4gtouch/kernel:kernel
-
 # Audio
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/asound.conf:system/etc/asound.conf
@@ -124,8 +116,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.call_ring.multiple=false \
        ro.telephony.call_ring.delay=3000 \
        ro.telephony.ril.v3=datacall \
-	   hwui.render_dirty_regions=false \
-	   hwui.disable_vsync=true
+       hwui.render_dirty_regions=false \
+       hwui.disable_vsync=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
        ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
@@ -203,7 +195,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.wimax.interface=uwbr0 \
     net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208 \
-	persist.service.usb.hubport=4
+    persist.service.usb.hubport=4
 	
 # MFC API
 PRODUCT_PACKAGES += \
