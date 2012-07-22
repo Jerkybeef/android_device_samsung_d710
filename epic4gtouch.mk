@@ -116,8 +116,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.call_ring.multiple=false \
        ro.telephony.call_ring.delay=3000 \
        ro.telephony.ril.v3=datacall \
-       hwui.render_dirty_regions=false \
-       hwui.disable_vsync=true
+       hwui.render_dirty_regions=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
        ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
@@ -125,7 +124,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	   persist.service.usb.setting=0 \
-	   persist.service.adb.enable=1 \
+           persist.service.usb.hubport=4 \
+	   persist.service.adb.enable=1
    
 # Telephony property for CDMA
 PRODUCT_PROPERTY_OVERRIDES += \
