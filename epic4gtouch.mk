@@ -119,14 +119,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
        hwui.render_dirty_regions=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-       ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
-       persist.sys.usb.config=mass_storage
-
-PRODUCT_PROPERTY_OVERRIDES += \
+           ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
 	   persist.service.usb.setting=0 \
-           persist.service.usb.hubport=4 \
-	   persist.service.adb.enable=1
-   
+	   persist.service.adb.enable=1 \
+	   persist.sys.usb.config=mass_storage,adb
+	   
 # Telephony property for CDMA
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=4 \
@@ -142,7 +139,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces=ppp0 \
     ro.telephony.ril_class=SamsungRIL \
     ro.ril.samsung_cdma=true \
-    ro.carrier=Sprint	
+    ro.carrier=Sprint
 	#TODO: Finish adding cdma support to Smdk4210RIL
 	
 # Gps
@@ -154,11 +151,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
         TvOut \
 	TvOutHack \
+	audio.a2dp.default \
 	com.android.future.usb.accessory \
 	smdk4210_hdcp_keys \
 	GalaxyS2Settings \
 	SamsungServiceMode \
-	Torch \
+        Superuser \
+        su \
 	gps.exynos4
 	
 # Camera

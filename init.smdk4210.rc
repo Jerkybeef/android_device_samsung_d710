@@ -54,7 +54,7 @@ on fs
 
 on post-fs-data
 # bind external sd
-    mount -o bind /mnt/emmc /mnt/sdcard/external_sd
+    # mount -o bind /mnt/emmc /mnt/sdcard/external_sd
 
 # GPS
     chown root system /dev/ttySAC1
