@@ -1,7 +1,7 @@
 import init.smdk4210.usb.rc
 
 on early-init
-    export SECONDARY_STORAGE /mnt/emmc
+    export PHONE_STORAGE /mnt/emmc
     export EXTERNAL_STORAGE /mnt/sdcard
 
     mkdir /mnt 0775 system system
