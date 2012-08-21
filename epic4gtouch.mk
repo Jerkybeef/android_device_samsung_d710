@@ -46,7 +46,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/base/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
 	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
-	
+
 # Keylayout
 PRODUCT_COPY_FILES += \
     device/samsung/epic4gtouch/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
@@ -68,7 +68,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
     device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
     device/samsung/epic4gtouch/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl
-	
+
 # Keychars
 PRODUCT_COPY_FILES += \
    device/samsung/epic4gtouch/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
@@ -87,18 +87,18 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/asound.conf:system/etc/asound.conf
-	
-# Misc	
+
+# Misc
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/apns-conf.xml:system/etc/apns-conf.xml
-	
+
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
-	
+
 # Vold
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/vold.fstab:system/etc/vold.fstab 
+	device/samsung/epic4gtouch/configs/vold.fstab:system/etc/vold.fstab
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
@@ -120,7 +120,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
        ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
-       persist.sys.usb.config=mass_storage
+       persist.sys.usb.config=mass_storage,adb
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	   persist.service.usb.setting=0 \
@@ -148,27 +148,29 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Gps
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/gps.conf:system/etc/gps.conf \
-	device/samsung/epic4gtouch/configs/sirfgps.conf:system/etc/sirfgps.conf
+	device/samsung/epic4gtouch/configs/sirfgps.conf:system/etc/sirfgps.conf \
+        device/samsung/epic4gtouch/gpsfix:system/bin/gpsfix
 
 # Packages
 PRODUCT_PACKAGES := \
         TvOut \
 	TvOutHack \
+	audio.a2dp.default \
 	com.android.future.usb.accessory \
 	smdk4210_hdcp_keys \
 	GalaxyS2Settings \
 	SamsungServiceMode \
 	Torch \
 	gps.exynos4
-	
+
 # Camera
 PRODUCT_PACKAGES += \
 	Camera \
 	camera.exynos4
-	
+
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml
-	
+
 # Charger
 PRODUCT_PACKAGES += \
     charger \
@@ -184,7 +186,7 @@ PRODUCT_PACKAGES += \
 	static_busybox \
 	make_ext4fs \
 	setup_fs
-	
+
 # WIMAX
 PRODUCT_PACKAGES += \
     WiMAXSettings \
@@ -196,7 +198,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.wimax.interface=uwbr0 \
     net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208 \
     persist.service.usb.hubport=4
-	
+
 # MFC API
 PRODUCT_PACKAGES += \
     libsecmfcapi
