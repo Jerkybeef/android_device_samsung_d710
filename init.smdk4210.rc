@@ -54,6 +54,9 @@ on fs
 
 on post-fs-data
 
+# MDNS
+    socket mdns stream 0660 root system
+    
 # GPS
     chown root system /dev/ttySAC1
     chmod 0660 /dev/ttySAC1
@@ -72,12 +75,6 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 	
-# Device control nodes for WiMAX
-	exec /system/xbin/busybox mknod -m 0660 /dev/swmxctl c 234 0
-	exec /system/xbin/busybox mknod -m 0660 /dev/uwibro c 233 0
-	chown system system /dev/swmxctl
-	chown system system /dev/uwibro 
-
 #DRM directory creation
     mkdir /system/etc/security/.drm 0775
     chown root root /system/etc/security/.drm
@@ -394,12 +391,6 @@ on property:persist.service.usb.hubport=14
 	write /sys/devices/platform/i2c-gpio.17/i2c-17/17-0008/port disable_cp
 	write /sys/devices/platform/i2c-gpio.17/i2c-17/17-0008/port disable_ap
 
-#Wimax 
-    chmod 660 /dev/swmxctl
-    chmod 660 /dev/uwibro
-    chown system system /dev/swmxctl
-    chown system system /dev/uwibro	
-	
 #SISO Data Call Changes S
 service pppd_cdma /system/bin/pppd_runner
    user root
