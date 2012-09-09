@@ -21,10 +21,10 @@
 *
 */
 
-/*
+
 #define LOG_NDEBUG 0
-#define LOG_PARAMETERS
-*/
+//#define LOG_PARAMETERS
+
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
 
@@ -54,7 +54,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          version_major: 1,
          version_minor: 0,
          id: CAMERA_HARDWARE_MODULE_ID,
-         name: "Exynos Camera Wrapper",
+         name: "Exynos4x12 Camera Wrapper",
          author: "Teamhacksung <info@teamhacksung.org>",
          methods: &camera_module_methods,
          dso: NULL, /* remove compilation warnings */
@@ -91,24 +91,16 @@ static int check_vendor_module()
     return rv;
 }
 
-const static char * video_preview_sizes[] = {
-    "1920x1080,1280x720,720x480",
-    "640x480,352x288,320x240,176x144"
-};
+const static char * iso_values[] = {"auto,ISO50,ISO100,ISO200,ISO400,ISO800","auto"};
 
 static char * camera_fixup_getparams(int id, const char * settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
-    params.remove(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES);
+    // fix params here
 
-    if(params.get("cam_mode"))
-    {
-        params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, video_preview_sizes[id]);
-        const char* videoSize = params.get(android::CameraParameters::KEY_VIDEO_SIZE);
-        params.set(android::CameraParameters::KEY_PREVIEW_SIZE, videoSize);
-    }
+    params.set("iso-values", iso_values[id]);
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
@@ -122,12 +114,20 @@ char * camera_fixup_setparams(int id, const char * settings)
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
-    if(params.get("cam_mode"))
-    {
-        const char* previewSize = params.get(android::CameraParameters::KEY_PREVIEW_SIZE);
-        params.set(android::CameraParameters::KEY_VIDEO_SIZE, previewSize);
-        params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, previewSize);
-        params.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES, video_preview_sizes[id]);
+    // fix params here
+
+    const char* isoMode = params.get("iso");
+    if(isoMode) {
+        if(!strcmp(isoMode, "ISO50"))
+            params.set("iso", "50");
+        else if(!strcmp(isoMode, "ISO100"))
+            params.set("iso", "100");
+        else if(!strcmp(isoMode, "ISO200"))
+            params.set("iso", "200");
+        else if(!strcmp(isoMode, "ISO400"))
+            params.set("iso", "400");
+        else if(!strcmp(isoMode, "ISO800"))
+            params.set("iso", "800");
     }
 
     android::String8 strParams = params.flatten();
@@ -146,7 +146,7 @@ int camera_set_preview_window(struct camera_device * device,
 {
     LOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device, (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
-    if(!device)
+    if(!device || !window)
         return -EINVAL;
 
     return VENDOR_CALL(device, set_preview_window, window);
@@ -311,8 +311,11 @@ int camera_cancel_auto_focus(struct camera_device * device)
     if(!device)
         return -EINVAL;
 
-
-    return VENDOR_CALL(device, cancel_auto_focus);
+    // Samsung camera HAL restarts focus (CAF_RESTART) when we cancel auto focus.
+    // Cancel auto focus is called just before pic is taken in autofocus mode, thus
+    // the HAL crashes.
+    return 0;
+    //return VENDOR_CALL(device, cancel_auto_focus);
 }
 
 int camera_take_picture(struct camera_device * device)
@@ -399,7 +402,10 @@ int camera_send_command(struct camera_device * device,
     if(!device)
         return -EINVAL;
 
-    return VENDOR_CALL(device, send_command, cmd, arg1, arg2);
+    /* send_command causes the camera hal do to unexpected things like lockups.
+     * don't pass any command to the vendor hal to prevent this */
+    return 0;
+    //return VENDOR_CALL(device, send_command, cmd, arg1, arg2);
 }
 
 void camera_release(struct camera_device * device)

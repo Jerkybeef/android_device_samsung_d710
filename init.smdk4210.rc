@@ -425,6 +425,13 @@ service iprenew_p2p /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
+
+service pppd_cdma /system/bin/pppd_runner
+    class main
+    user root
+    group radio cache inet misc system
+    disabled
+    oneshot
 	
 # Wimax changes
 service dhcpcd_uwbr0 /system/bin/dhcpcd -ABKL

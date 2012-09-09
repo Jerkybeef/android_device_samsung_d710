@@ -18,7 +18,7 @@
 <resources>
 
     <!-- Flag indicating if the tty is enabled -->
-    <bool name="tty_enabled">true</bool>
+    <bool name="tty_enabled">false</bool>
     <bool name="sprint_mwi_quirk">true</bool>
 
     <!-- Determines if device implements a noise suppression device for in call audio-->
